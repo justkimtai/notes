@@ -12,9 +12,10 @@ builder.prismaObject('User', {
 
   builder.queryField("users", (t) =>
     // 2.
-      t.prismaField({
+      t.prismaConnection({
         // 3.
-        type: ['User'],
+        type: 'User',
+        cursor: 'id',
         // 4.
         resolve: (query) =>
           prisma.user.findMany({ ...query })

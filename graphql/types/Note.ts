@@ -14,9 +14,10 @@ builder.prismaObject('Note', {
 
 builder.queryField("notes", (t) =>
   // 2.
-    t.prismaField({
+    t.prismaConnection({
       // 3.
-      type: ['Note'],
+      type: 'Note',
+      cursor: 'id',
       // 4.
       resolve: (query) =>
         prisma.note.findMany({ ...query })

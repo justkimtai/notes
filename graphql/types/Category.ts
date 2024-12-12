@@ -11,9 +11,10 @@ builder.prismaObject('Category', {
 
   builder.queryField("categories", (t) =>
     // 2.
-      t.prismaField({
+      t.prismaConnection({
         // 3.
-        type: ['Category'],
+        type: 'Category',
+        cursor: 'id',
         // 4.
         resolve: (query) =>
           prisma.category.findMany({ ...query })
